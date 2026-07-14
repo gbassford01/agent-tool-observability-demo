@@ -27,6 +27,18 @@ Pass a custom query:
 npm run dev -- "tool calling observability"
 ```
 
+Export the completed run trace to JSON while keeping the console trace report:
+
+```bash
+npm run dev -- --export-trace ./trace.json "tool calling observability"
+```
+
+The `--export-trace <path>` file uses snake_case fields. Top-level fields are
+`run_id`, `started_at`, `completed_at`, `total_duration_ms`, and `tool_calls`.
+Each tool call includes `name`, `input_summary`, `success`, `duration_ms`,
+`output_summary` for successful calls when available, and `error_message` for
+failed calls.
+
 ## Test
 
 ```bash
